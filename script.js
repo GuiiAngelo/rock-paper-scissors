@@ -11,20 +11,6 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice() {
-    const userChoice = prompt(
-        "Enter only the number:\nRock - 1\nPaper - 2\nScissors - 3"
-    );
-
-    if (userChoice === "1") {
-        return "rock";
-    } else if (userChoice === "2") {
-        return "paper";
-    } else if (userChoice === "3") {
-        return "scissors";
-    }
-}
-
 
 function playGame(){
     let humanScore = 0;
@@ -57,18 +43,30 @@ function playGame(){
     else {
         alert(`It's a tie!\nComputer choice: ${computerChoice}`);
     }
+    humanResult.textContent =  `Your score: ${humanScore}`;
+    computerResult.textContent = `Computer score: ${computerScore}`;
+    game.appendChild(humanResult);
+    game.appendChild(computerResult);
 }
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
+    const rockChoice = document.querySelector("#rock");
+    const paperChoice = document.querySelector("#paper");
+    const scissors = document.querySelector("#scissors");
 
-if (humanScore > computerScore) {
-    alert(`Your points: ${humanScore}\nComputer points: ${computerScore}\nYou have won on 5 rounds!`);
-} else if (computerScore > humanScore) {
-    alert(`Your points: ${humanScore}\nComputer points: ${computerScore}\nYou have lost on 5 rounds.`);
-} else {
-    alert(`Your points: ${humanScore}\nComputer points: ${computerScore}\nYou have drawn on 5 rounds.`);
-}
+    rockChoice.addEventListener("click", () => {
+        playRound("rock", getComputerChoice());
+    });
+
+    paperChoice.addEventListener("click", () => {
+        playRound("paper", getComputerChoice());
+    });
+
+    scissors.addEventListener("click", () => {
+        playRound("scissors", getComputerChoice());
+    });
+
 }
 
+    const game = document.querySelector("#game");
+    const humanResult = document.createElement("p");
+    const computerResult = document.createElement("p");
 playGame();
