@@ -58,11 +58,10 @@ function playGame(){
         alert(`It's a tie!\nComputer choice: ${computerChoice}`);
     }
 }
-for(let i=1; i<=5; i++){
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-}
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+playRound(humanSelection, computerSelection);
+
 if (humanScore > computerScore) {
     alert(`Your points: ${humanScore}\nComputer points: ${computerScore}\nYou have won on 5 rounds!`);
 } else if (computerScore > humanScore) {
