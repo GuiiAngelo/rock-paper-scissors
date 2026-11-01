@@ -15,7 +15,10 @@ function getComputerChoice(){
 function playGame(){
     let humanScore = 0;
     let computerScore = 0;
+    let gameOver = false;
+
     function playRound(humanChoice, computerChoice) {
+        if (gameOver) return;
     if (humanChoice === "rock" && computerChoice === "scissors") {
         humanScore++;
         alert(`You win!\nComputer choice: ${computerChoice}`);
@@ -47,6 +50,16 @@ function playGame(){
     computerResult.textContent = `Computer score: ${computerScore}`;
     game.appendChild(humanResult);
     game.appendChild(computerResult);
+
+    if (humanScore === 5 || computerScore === 5) {
+    gameOver = true;
+
+    if (humanScore === 5) {
+        alert("Congratulations! You won the game!");
+    } else {
+        alert("Game over! The computer won!");
+    }
+}
 }
     const rockChoice = document.querySelector("#rock");
     const paperChoice = document.querySelector("#paper");
