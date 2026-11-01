@@ -48,8 +48,8 @@ function playGame(){
     }
     humanResult.textContent =  `Your score: ${humanScore}`;
     computerResult.textContent = `Computer score: ${computerScore}`;
-    game.appendChild(humanResult);
-    game.appendChild(computerResult);
+    results.appendChild(humanResult);
+    results.appendChild(computerResult);
 
     if (humanScore === 5 || computerScore === 5) {
     gameOver = true;
@@ -79,7 +79,7 @@ function playGame(){
 
 }
 
-    const game = document.querySelector("#game");
+    const results = document.querySelector("#results");
     const humanResult = document.createElement("p");
     const computerResult = document.createElement("p");
 playGame();
